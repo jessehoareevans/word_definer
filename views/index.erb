@@ -1,0 +1,10 @@
+<h1>Word</h1>
+
+<ul>
+  <% @all_words.each() do |word| %>
+  <li><a href="/words/<%= word.id()%>"><%= word.learn() %></a></li>
+  <% end %>
+</ul>
+
+
+<a href="/new_word">Add word</a>

@@ -1,5 +1,6 @@
 require('rspec')
 require("word")
+require('definition')
 
 describe(Word) do
 
@@ -46,4 +47,12 @@ describe(".all") do
       expect(word2_test.id()).to(eq(2))
     end
   end
+
+  describe(".find") do
+   it('finds word based on its id number') do
+     word_test = Word.new({:learn=> "pillow"})
+     word_test.save()
+     expect(Word.find(word_test.id())).to(eq(word_test))
+   end
+ end
 end

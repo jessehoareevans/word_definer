@@ -6,6 +6,7 @@ attr_accessor(:learn)
   def initialize(attributes)
     @learn = attributes.fetch(:learn)
     @id = @@words.length + 1
+    @definitions = []
   end
 
   define_method (:learn) do
@@ -26,5 +27,23 @@ attr_accessor(:learn)
 
   def self.clear
     @@words = []
+  end
+
+  def definitions
+    @definitions
+  end
+
+  def add_definitions(definition)
+    @defintions.push(definition)
+  end
+
+  def self.find(id_number)
+    found_word = nil
+    @@words.each() do |word|
+      if word.id() == id_number.to_i()
+        found_word = word
+      end
+    end
+    found_word
   end
 end
