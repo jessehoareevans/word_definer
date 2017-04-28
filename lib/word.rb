@@ -6,7 +6,7 @@ attr_accessor(:learn)
   def initialize(attributes)
     @learn = attributes.fetch(:learn)
     @id = @@words.length + 1
-    @definitions = []
+    @word = []
   end
 
   define_method (:learn) do
@@ -29,12 +29,12 @@ attr_accessor(:learn)
     @@words = []
   end
 
-  def definitions
-    @definitions
+  def word
+    @word
   end
 
-  def add_definitions(definition)
-    @defintions.push(definition)
+  def add_word(definition)
+    @word.push(definition)
   end
 
   def self.find(id_number)

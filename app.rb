@@ -13,3 +13,17 @@ end
 get('/new_word') do
   erb(:word_form)
 end
+
+get('/word/:id') do
+  word_id = params.fetch('id').to_i()
+  @word = Word.find(word_id)
+  @definitions = @word.definition
+  erb(:word)
+end
+
+post('/word_form') do
+  word = params.fetch('learn')
+  Word.new(word).save()
+  @word = Word.all()
+  erb(:index)
+end
