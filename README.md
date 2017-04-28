@@ -11,7 +11,7 @@ _This is a website designed to be able to give the user the ability to add a wor
 ## Setup/Installation Requirements
 
 * _Follow this Heroku Link_
-* _Or clone this repository and upload it to on your browser https://github.com/jessehoareevans/word_definer.git_
+* _Or clone this repository and upload it to on your browser https://github.com/jessehoareevans/word_definer.git_ and follow the link to http://localhost:4567/
 
 ## Technologies Used
 

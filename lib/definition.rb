@@ -6,6 +6,7 @@ attr_accessor(:explanation)
   def initialize(attributes)
     @explanation = attributes.fetch(:explanation)
     @id = @@definitions.length + 1
+    @explain = []
   end
 
   define_method (:explanation) do
@@ -26,5 +27,9 @@ attr_accessor(:explanation)
 
   def self.clear
     @@definitions = []
+  end
+
+  def explain
+    @explain
   end
 end
