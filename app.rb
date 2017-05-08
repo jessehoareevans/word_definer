@@ -6,40 +6,43 @@ require('pry')
 also_reload('lib/**/*.rb')
 
 get('/') do
-  @all_words = Word.all()
-  erb(:index)
+erb(:index)
 end
 
-get('/new_word') do
-  erb(:word_form)
+get('/words/new') do
+ erb(:words_form)
 end
 
-get('/word/:id') do
-  word_id = params.fetch('id').to_i()
-  @word = Word.find(word_id)
-  @definitions = @word.definition
-  erb(:word)
+get('/words') do
+  @words = Word.all()
+  erb(:words)
 end
 
-post('/word_form') do
-  word = params.fetch('learn')
-  @word = Word.new({:learn => learn})
-  @word.save()
-  @word = Word.all()
-  @definitions = Definition.all()
-  erb(:index)
+post('/words') do
+  learn = params.fetch('name')
+  Word.new({:learn => learn}).save()
+  @words = Word.all()
+  erb(:success)
 end
 
-get('/word/:id/definitions/new') do
-  word_id = params.fetch('id').to_i()
-  @word = Word.find(word_id)
+get('/words/:id') do
+  @word = Word.find(params.fetch('id').to_i())
+  erb(:word_definition)
+end
+
+get('/definition/:id')
+  @definition = Definition.find(params.fetch('id').to_i())
+  erb(:definition)
+end
+
+get('/definition_form') do
   erb(:definition_form)
 end
 
-post('/definition_form') do
-  explanation = params.fetch('explanation')
-  @definitions = Definition.new({:explanation=> explanation})
-  @definitions.save()
-  @definitions = Definition.all()
-  @word = Word.all()
+post('/new') do
+  definition= params.fetch('definition')
+  @definition = Definition.new(definition)
+  @definition.save()
+  @word.add_definition(@definition)
+  erb(:word_definition)
 end

@@ -12,7 +12,7 @@ describe(Word) do
     it("returns the word back that was inputted") do
       test_word = Word.new({:learn=> "fireplace"})
       expect(test_word.learn()).to(eq("fireplace"))
-      end
+    end
   end
 
 describe(".all") do

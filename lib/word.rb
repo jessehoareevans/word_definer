@@ -1,6 +1,6 @@
 class Word
 
-attr_accessor(:learn)
+attr_reader(:learn, :id)
 @@words = []
 
   def initialize(attributes)

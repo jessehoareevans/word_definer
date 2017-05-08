@@ -1,6 +1,6 @@
 class Definition
 
-attr_accessor(:explanation)
+attr_reader(:explanation, :id)
 @@definitions = []
 
   def initialize(attributes)
