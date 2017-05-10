@@ -1,9 +1,16 @@
 <h4>Word: <%= @word.learn() %></h4>
 
 <form action="/definition" method="post">
+  <input type="hidden" name="word_id" value="<%=@word.id()%>">
   <label for="define">Definition:</label>
   <input id="define" name="define" type="text">
   <button type="submit">Add Definition</button>
 </form>
+
+<ul>
+  <% @word.explain().each() do |explain| %>
+    <li><%= explain.id() %></li>
+  <% end %>
+</ul>
 
 <a href="/">Return to main page</a>

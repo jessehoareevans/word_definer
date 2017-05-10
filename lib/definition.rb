@@ -4,7 +4,7 @@ attr_reader(:explanation, :id)
 @@definitions = []
 
   def initialize(attributes)
-    @explanation = attributes.fetch(:explanation)
+    @explanation = explanation
     @id = @@definitions.length + 1
     @explain = []
   end
@@ -31,5 +31,15 @@ attr_reader(:explanation, :id)
 
   def explain
     @explain
+  end
+
+  def self.find(id_number)
+    found_definition = nil
+    @@definitions.each() do |word|
+      if word.id() == id_number.to_i()
+        found_definition = definition
+      end
+    end
+    found_definition
   end
 end
