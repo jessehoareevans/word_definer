@@ -9,8 +9,8 @@ attr_reader(:explanation, :id)
     @explain = []
   end
 
-  define_method (:explanation) do
-    @explanation
+  define_method (:add_definition) do |definition|
+    @explain.push(definition)
   end
 
   def self.all
@@ -19,10 +19,6 @@ attr_reader(:explanation, :id)
 
   def save
     @@definitions.push(self)
-  end
-
-  def id
-    @id
   end
 
   def self.clear

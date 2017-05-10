@@ -43,12 +43,6 @@ post('/definition') do
   @word = Word.find(params.fetch('word_id').to_i())
   @word.add_definition(@explanation)
   erb(:success)
-
-
-  define = params.fetch('define')
-  Definition.new({:explanation => define}).save()
-  @defintion = Definition.all()
-  erb(:success)
 end
 
 get('definition_form') do

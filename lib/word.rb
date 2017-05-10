@@ -13,10 +13,6 @@ attr_reader(:learn, :id)
     @learn
   end
 
-  define_method (:add_definition) do |definition|
-    @word.push(definition)
-  end
-
   def self.all
     @@words
   end

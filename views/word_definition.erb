@@ -8,8 +8,8 @@
 </form>
 
 <ul>
-  <% @word.explain().each() do |explain| %>
-    <li><%= explain.id() %></li>
+  <% @word.add_definition().each() do |add_definition| %>
+    <li><%= add_definition.id() %></li>
   <% end %>
 </ul>
 
