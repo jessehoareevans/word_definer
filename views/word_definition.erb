@@ -1,6 +1,9 @@
-<h4>Word:<%= @word.learn() %></h4>
+<h4>Word: <%= @word.learn() %></h4>
 
-<h4>Define the Word<%@definition.explanation()%></h4>
+<form action="/words" method="post">
+  <label for="learn">Definition:</label>
+  <input id="learn" name="learn" type="text">
+  <button type="submit">Add Definition</button>
+</form>
 
-<a href="/definiton_form">Add a Definition to your Word</a>
 <a href="/">Return to main page</a>
