@@ -19,7 +19,7 @@ get('/words') do
 end
 
 post('/words') do
-  learn = params.fetch('learn')
+  learn = params.fetch('name')
   Word.new({:learn => learn}).save()
   @words = Word.all()
   erb(:success)
@@ -36,7 +36,14 @@ get('/definition/:id') do
   erb(:definition)
 end
 
-get('/definition_form') do
+post('/definition') do
+  define = params.fetch('define')
+  Definition.new({:explanation => define}).save()
+  @defintion = Definition.all()
+  erb(:success)
+end
+
+get('definition_form') do
   erb(:success)
 end
 
