@@ -7,26 +7,26 @@ describe(Definition) do
     Definition.clear()
   end
 
-  describe("#explanation") do
+  describe("#definition") do
     it("returns the definition back that was inputted") do
-      test_word = Definition.new({:explanation=> "a place for a fire with a chimney"})
-      expect(test_word.explanation()).to(eq("a place for a fire with a chimney"))
+      test_word = Definition.new("a place for a fire with a chimney")
+      expect(test_word.definition()).to(eq("a place for a fire with a chimney"))
       end
   end
 
-describe(".all") do
-   it("shows what is inside the array") do
+  describe(".all") do
+    it("shows what is inside the array") do
      expect(Definition.all()).to(eq([]))
+    end
    end
- end
 
- describe(".clear") do
-   it("clears the array") do
+  describe(".clear") do
+    it("clears the array") do
      expect(Definition.all()).to(eq([]))
-   end
- end
+    end
+  end
 
- describe("#save") do
+  describe("#save") do
    it("saves the definition to the array") do
      definition_test = Definition.new({:explanation=> "object used to support someone's head"})
      definition_test.save()

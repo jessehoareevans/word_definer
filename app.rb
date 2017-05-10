@@ -19,40 +19,53 @@ get('/words') do
 end
 
 post('/words') do
-  learn = params.fetch('name')
-  Word.new({:learn => learn}).save()
-  @words = Word.all()
+  name = params.fetch('name')
+  @word = Word.new(name)
+  @word.save()
   erb(:success)
 end
 
-get('/words/:id') do
-  @word = Word.find(params.fetch('id').to_i())
-  @definition = Definition.all()
-  erb(:word_definition)
-end
-
-get('/definition/:id') do
+get('/definitions/:id') do
   @definition = Definition.find(params.fetch('id').to_i())
   erb(:definition)
 end
 
-post('/definition') do
-  define = params.fetch('define')
-  @explanation = Definition.new(define)
-  @explanation.save()
-  @word = Word.find(params.fetch('word_id').to_i())
-  @word.add_definition(@explanation)
-  erb(:success)
+get('/words/:id') do
+  word_id = params.fetch('id').to_i()
+  @word = Word.find(word_id)
+  erb(:word)
 end
 
-get('definition_form') do
-  erb(:success)
-end
-
-post('/words') do
-  definition= params.fetch('definition')
+post('/definitions/') do
+  definition = params.fetch('definition')
   @definition = Definition.new(definition)
   @definition.save()
+  @word = Word.find(params.fetch('word_id').to_i())
   @word.add_definition(@definition)
+  erb(:word)
+end
+
+get('/words/:id/definitions/new') do
+  @word = Word.find(params.fetch('id').to_i())
+  erb(:word_definition)
+end
+
+post('/new') do
+  definition = params.fetch('definition')
+  @definition = Definition.new(definition)
+  @definition.save()
+  @word = Word.find(params.fetch('word_id').to_i())
+  @word.add_definition(@definition)
+  erb(:success)
+end
+
+
+
+get('/definitions/') do
+  @definitions = Definition.all()
+  erb(:definitions)
+end
+
+get('/word_definition/new') do
   erb(:word_definition)
 end

@@ -1,16 +1,13 @@
-<h4>Word: <%= @word.learn() %></h4>
+<h4>Word: <%= @word.definitions() %></h4>
 
-<form action="/definition" method="post">
-  <input type="hidden" name="word_id" value="<%=@word.id()%>">
-  <label for="define">Definition:</label>
-  <input id="define" name="define" type="text">
+<form action="/new" method="post">
+  <input id='word_id' name='word_id' type='hidden' value='<%= @word.id() %>'>
+
+  <label for='definition'>Definition:</label>
+  <input id='definition' name='definition' type='text'>
+
   <button type="submit">Add Definition</button>
 </form>
 
-<ul>
-  <% @word.add_definition().each() do |add_definition| %>
-    <li><%= add_definition.id() %></li>
-  <% end %>
-</ul>
 
 <a href="/">Return to main page</a>

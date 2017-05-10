@@ -1,46 +1,44 @@
 class Word
+  @@words = []
 
-attr_reader(:learn, :id)
-@@words = []
-
-  def initialize(attributes)
-    @learn = attributes.fetch(:learn)
-    @id = @@words.length + 1
-    @word = []
+  define_method(:initialize) do |word|
+    @word = word
+    @id = @@words.length().+(1)
+    @definitions = []
   end
 
-  define_method (:learn) do
-    @learn
-  end
-
-  def self.all
-    @@words
-  end
-
-  def save
-    @@words.push(self)
-  end
-
-  def id
-    @id
-  end
-
-  def self.clear
-    @@words = []
-  end
-
-  def word
+  define_method(:word) do
     @word
   end
 
-  def add_word(definition)
-    @word.push(definition)
+  define_method(:id) do
+    @id
   end
 
-  def self.find(id_number)
+  define_method(:definitions) do
+    @definitions
+  end
+
+  define_singleton_method(:all) do
+    @@words
+  end
+
+  define_method(:save) do
+    @@words.push(self)
+  end
+
+  define_singleton_method(:clear) do
+    @@words = []
+  end
+
+  define_method(:add_definition) do |definition|
+  @definitions.push(definition)
+  end
+
+  define_singleton_method(:find) do |id|
     found_word = nil
     @@words.each() do |word|
-      if word.id() == id_number.to_i()
+      if word.id().eql?(id)
         found_word = word
       end
     end

@@ -1,41 +1,28 @@
 class Definition
+  @@definitions = []
 
-attr_reader(:explanation, :id)
-@@definitions = []
-
-  def initialize(attributes)
-    @explanation = explanation
-    @id = @@definitions.length + 1
-    @explain = []
+  define_method(:initialize) do |definition|
+    @definition = definition
+    @id = @@definitions.length().+(1)
   end
 
-  define_method (:add_definition) do |definition|
-    @explain.push(definition)
+  define_method(:definition) do
+    @definition
   end
 
-  def self.all
+  define_singleton_method(:all) do
     @@definitions
   end
 
-  def save
+  define_method(:save) do
     @@definitions.push(self)
   end
 
-  def self.clear
+  define_method(:id) do
+    @id
+  end
+
+  define_singleton_method(:clear) do
     @@definitions = []
-  end
-
-  def explain
-    @explain
-  end
-
-  def self.find(id_number)
-    found_definition = nil
-    @@definitions.each() do |word|
-      if word.id() == id_number.to_i()
-        found_definition = definition
-      end
-    end
-    found_definition
   end
 end

@@ -8,10 +8,10 @@ describe(Word) do
     Word.clear()
   end
 
-  describe("#learn") do
+  describe("#word") do
     it("returns the word back that was inputted") do
-      test_word = Word.new({:learn=> "fireplace"})
-      expect(test_word.learn()).to(eq("fireplace"))
+      test_word = Word.new("fireplace")
+      expect(test_word.word()).to(eq("fireplace"))
     end
   end
 
